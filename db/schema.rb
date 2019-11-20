@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_064000) do
+ActiveRecord::Schema.define(version: 2019_11_20_065604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_064000) do
     t.index ["description"], name: "index_sizes_on_description", unique: true
   end
 
-  add_foreign_key "sections", "areas"
+  add_foreign_key "sections", "areas", on_delete: :cascade
   add_foreign_key "sections_sizes", "sections", on_delete: :cascade
   add_foreign_key "sections_sizes", "sizes", on_delete: :cascade
 end
