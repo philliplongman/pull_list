@@ -12,6 +12,8 @@
 #
 
 class Area < ApplicationRecord
+  has_many :sections, dependant: :destrpy
+
   validates :name, presence: true
   validates :name, uniqueness: true
 
