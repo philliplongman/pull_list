@@ -20,6 +20,9 @@
 class Section < ApplicationRecord
   belongs_to :area
 
+  has_many :sections_sizes, dependant: :destory
+  has_many :sizes, through: :sections_sizes
+
   validates :name, presence: true
   validates :name, uniqueness: true
 

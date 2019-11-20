@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_063433) do
+ActiveRecord::Schema.define(version: 2019_11_20_064000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,5 +47,21 @@ ActiveRecord::Schema.define(version: 2019_11_20_063433) do
     t.index ["name"], name: "index_sections_on_name", unique: true
   end
 
+  create_table "sections_sizes", force: :cascade do |t|
+    t.bigint "section_id", null: false
+    t.bigint "size_id", null: false
+    t.index ["section_id", "size_id"], name: "index_sections_sizes_on_section_id_and_size_id", unique: true
+    t.index ["section_id"], name: "index_sections_sizes_on_section_id"
+    t.index ["size_id"], name: "index_sections_sizes_on_size_id"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string "description", null: false
+    t.string "timestamps"
+    t.index ["description"], name: "index_sizes_on_description", unique: true
+  end
+
   add_foreign_key "sections", "areas"
+  add_foreign_key "sections_sizes", "sections", on_delete: :cascade
+  add_foreign_key "sections_sizes", "sizes", on_delete: :cascade
 end
