@@ -1,9 +1,42 @@
 @import "picnic.min";
 
 
+div.error_notification,
+span.error {
+  color: #ff4136;
+}
+
+div.input {
+  margin: 14px 0;
+}
+
 main > section {
   padding: 80px 0 0;
   margin: 0 auto;
   max-width: 960px;
   width: 90%;
+}
+
+span.error,
+span.hint {
+  display: block;
+  font-size: 0.8em
+}
+
+span.hint {
+  color: slategrey;
+}
+
+.devise-link {
+  display: block;
+  padding-top: 20px;
+}
+
+.form-actions {
+  padding-top: 10px;
+}
+
+.narrow {
+  margin: 0 auto;
+  max-width: 576px;
 }

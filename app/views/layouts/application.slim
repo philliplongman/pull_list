@@ -16,7 +16,11 @@ html
         span PullList
 
       .menu
-        a.button Log In
+        - if current_manager
+          = link_to "Log out", destroy_manager_session_path, method: :delete, class: "button"
+        - else
+          a.pseudo.button href=new_manager_registration_path Sign up
+          a.button href=new_manager_session_path Log In
 
     main
       section
