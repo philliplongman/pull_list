@@ -12,7 +12,7 @@
 #
 
 class Area < ApplicationRecord
-  has_many :sections, dependant: :destrpy
+  has_many :sections, dependent: :destroy
 
   validates :name, presence: true
   validates :name, uniqueness: true

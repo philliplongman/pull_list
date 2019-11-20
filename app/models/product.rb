@@ -23,8 +23,8 @@
 class Product < ApplicationRecord
   belongs_to :brand
 
-  has_many :products_sizes,     dependant: :destroy
-  has_many :sections_products,  dependant: :destroy
+  has_many :products_sizes,     dependent: :destroy
+  has_many :sections_products,  dependent: :destroy
 
   has_many :sections, -> { order :name }, through: :sections_products
   has_many :sizes,    -> { order :name }, through: :products_sizes
