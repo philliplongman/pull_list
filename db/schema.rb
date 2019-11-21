@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 2019_11_21_053314) do
     t.bigint "brand_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id", "name", "descriptor"], name: "index_products_on_brand_id_and_name_and_descriptor", unique: true
     t.index ["brand_id"], name: "index_products_on_brand_id"
-    t.index ["name", "descriptor"], name: "index_products_on_name_and_descriptor", unique: true
   end
 
   create_table "products_sizes", force: :cascade do |t|

@@ -11,8 +11,8 @@
 #
 # Indexes
 #
-#  index_products_on_brand_id             (brand_id)
-#  index_products_on_name_and_descriptor  (name,descriptor) UNIQUE
+#  index_products_on_brand_id                          (brand_id)
+#  index_products_on_brand_id_and_name_and_descriptor  (brand_id,name,descriptor) UNIQUE
 #
 # Foreign Keys
 #
@@ -29,6 +29,6 @@ class Product < ApplicationRecord
   has_many :sizes,    -> { order :description },  through: :products_sizes
 
   validates :name, presence: true
-  validates :name, uniqueness: { scope: :descriptor }
+  validates :name, uniqueness: { scope: [:brand, :descriptor] }
 
 end
