@@ -21,6 +21,12 @@
 class Section < ApplicationRecord
   belongs_to :area
 
+  has_many :placements, dependent: :destroy
+
+  has_many :products, -> { order :name, :descriptor },  through: :placements
+  has_many :sizes,    -> { order :description },        through: :placements
+
+
   validates :name, presence: true
   validates :name, uniqueness: true
 

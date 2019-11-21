@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_070532) do
+ActiveRecord::Schema.define(version: 2019_11_21_010936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,19 @@ ActiveRecord::Schema.define(version: 2019_11_20_070532) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_managers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
+  end
+
+  create_table "placements", force: :cascade do |t|
+    t.integer "shelf_capacity"
+    t.bigint "section_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "size_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_placements_on_product_id"
+    t.index ["section_id", "product_id", "size_id"], name: "index_placements_on_section_id_and_product_id_and_size_id", unique: true
+    t.index ["section_id"], name: "index_placements_on_section_id"
+    t.index ["size_id"], name: "index_placements_on_size_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -78,6 +91,9 @@ ActiveRecord::Schema.define(version: 2019_11_20_070532) do
     t.index ["description"], name: "index_sizes_on_description", unique: true
   end
 
+  add_foreign_key "placements", "products", on_delete: :cascade
+  add_foreign_key "placements", "sections", on_delete: :cascade
+  add_foreign_key "placements", "sizes", on_delete: :cascade
   add_foreign_key "products", "brands", on_delete: :cascade
   add_foreign_key "products_sizes", "products", on_delete: :cascade
   add_foreign_key "products_sizes", "sizes", on_delete: :cascade

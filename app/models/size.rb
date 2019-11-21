@@ -13,6 +13,12 @@
 #
 
 class Size < ApplicationRecord
+  has_many :placements,     dependent: :destroy
+  has_many :products_sizes, dependent: :destroy
+
+  has_many :products, -> { order :name, :descriptor },  through: :products_sizes
+  has_many :sections, -> { order :name },               through: :placements
+
   validates :description, presence: true
   validates :description, uniqueness: true
 

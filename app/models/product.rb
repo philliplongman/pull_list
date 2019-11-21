@@ -23,9 +23,11 @@
 class Product < ApplicationRecord
   belongs_to :brand
 
+  has_many :placements,     dependent: :destroy
   has_many :products_sizes, dependent: :destroy
 
-  has_many :sizes, -> { order :description }, through: :products_sizes
+  has_many :sections, -> { order :name },         through: :placements
+  has_many :sizes,    -> { order :description },  through: :products_sizes
 
   validates :name, presence: true
   validates :name, uniqueness: { scope: :descriptor }
