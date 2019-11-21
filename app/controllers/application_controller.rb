@@ -4,6 +4,4 @@ class ApplicationController < ActionController::Base
   self.responder = ApplicationResponder
   respond_to :html
 
-  before_action :authenticate_manager!
-
 end
