@@ -29,6 +29,6 @@ class Product < ApplicationRecord
   has_many :sizes,    -> { order :description },  through: :products_sizes
 
   validates :name, presence: true
-  validates :name, uniqueness: { scope: [:brand, :descriptor] }
+  validates :name, uniqueness: { scope: %i[brand descriptor] }
 
 end

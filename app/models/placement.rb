@@ -32,7 +32,7 @@ class Placement < ApplicationRecord
   validates :section,         presence: true
   validates :product,         presence: true
   validates :size,            presence: true
-  validates :shelf_capacity,  numericality: { integer: true }
+  validates :shelf_capacity,  numericality: { only_integer: true, allow_nil: true }
   validates :section,         uniqueness: { scope: %i[product size] }
 
 end

@@ -20,7 +20,8 @@ class Size < ApplicationRecord
   has_many :products, -> { order :name, :descriptor },  through: :products_sizes
   has_many :sections, -> { order :name },               through: :placements
 
-  validates :description, presence: true
-  validates :description, uniqueness: true
+  validates :description,             presence: true
+  validates :description,             uniqueness: true
+  validates :average_shelf_capacity,  numericality: { only_integer: true, allow_nil: true }
 
 end
