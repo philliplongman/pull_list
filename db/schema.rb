@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_053314) do
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.string "descriptor"
-    t.integer "shelf_capacity"
     t.bigint "brand_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

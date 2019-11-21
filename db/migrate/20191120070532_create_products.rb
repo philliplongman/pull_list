@@ -3,7 +3,6 @@ class CreateProducts < ActiveRecord::Migration[6.0]
     create_table :products do |t|
       t.string :name, null: false
       t.string :descriptor
-      t.integer :shelf_capacity
       t.belongs_to :brand, null: false, foreign_key: { on_delete: :cascade }
       t.timestamps
       t.index [:name, :descriptor], unique: true

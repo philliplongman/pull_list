@@ -2,13 +2,12 @@
 #
 # Table name: products
 #
-#  id             :bigint           not null, primary key
-#  descriptor     :string
-#  name           :string           not null
-#  shelf_capacity :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  brand_id       :bigint           not null
+#  id         :bigint           not null, primary key
+#  descriptor :string
+#  name       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  brand_id   :bigint           not null
 #
 # Indexes
 #
