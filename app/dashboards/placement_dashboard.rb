@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class SizeDashboard < Administrate::BaseDashboard
+class PlacementDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,12 +9,12 @@ class SizeDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id:             Field::Number,
-    description:    Field::String,
+    shelf_capacity: Field::Number,
     created_at:     Field::DateTime,
     updated_at:     Field::DateTime,
-    placements:     Field::HasMany,
-    sections_sizes: Field::HasMany,
-    sections:       Field::HasMany
+    section:        Field::BelongsTo,
+    product:        Field::BelongsTo,
+    size:           Field::BelongsTo
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,24 +23,29 @@ class SizeDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-    description
-    sections
+    section
+    product
+    size
+    shelf_capacity
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    description
-    created_at
-    updated_at
-    sections
+    section
+    product
+    size
+    shelf_capacity
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    description
+    section
+    product
+    size
+    shelf_capacity
   ].freeze
 
   # COLLECTION_FILTERS
@@ -55,9 +60,10 @@ class SizeDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how sizes are displayed
+  # Overwrite this method to customize how placements are displayed
   # across all pages of the admin dashboard.
-  def display_resource(size)
-    size.description
-  end
+  #
+  # def display_resource(placement)
+  #   "Placement #{placement.id}"
+  # end
 end

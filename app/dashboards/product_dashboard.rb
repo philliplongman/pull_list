@@ -14,9 +14,9 @@ class ProductDashboard < Administrate::BaseDashboard
     created_at:         Field::DateTime,
     updated_at:         Field::DateTime,
     brand:              Field::BelongsTo,
+    placements:         Field::HasMany,
     products_sizes:     Field::HasMany,
     sizes:              Field::HasMany,
-    sections_products:  Field::HasMany,
     sections:           Field::HasMany
   }.freeze
 
@@ -53,7 +53,6 @@ class ProductDashboard < Administrate::BaseDashboard
     name
     descriptor
     sizes
-    sections
   ].freeze
 
   # COLLECTION_FILTERS

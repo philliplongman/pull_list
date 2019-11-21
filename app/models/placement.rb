@@ -29,9 +29,10 @@ class Placement < ApplicationRecord
   belongs_to :product
   belongs_to :size
 
-  validates :section, presence: true
-  validates :product, presence: true
-  validates :size,    presence: true
-  validates :section, uniqueness: { scope: %i[product size] }
+  validates :section,         presence: true
+  validates :product,         presence: true
+  validates :size,            presence: true
+  validates :shelf_capacity,  numericality: { integer: true }
+  validates :section,         uniqueness: { scope: %i[product size] }
 
 end

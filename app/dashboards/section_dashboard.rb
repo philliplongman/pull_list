@@ -13,7 +13,7 @@ class SectionDashboard < Administrate::BaseDashboard
     created_at:         Field::DateTime,
     updated_at:         Field::DateTime,
     area:               Field::BelongsTo,
-    sections_products:  Field::HasMany,
+    placements:         Field::HasMany,
     products:           Field::HasMany,
     sections_sizes:     Field::HasMany,
     sizes:              Field::HasMany
@@ -48,8 +48,6 @@ class SectionDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     name
     area
-    sizes
-    products
   ].freeze
 
   # COLLECTION_FILTERS
