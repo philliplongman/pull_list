@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2019_11_21_053314) do
 
   create_table "sizes", force: :cascade do |t|
     t.string "description", null: false
+    t.integer "average_shelf_capacity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["description"], name: "index_sizes_on_description", unique: true
