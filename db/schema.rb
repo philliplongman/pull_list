@@ -17,13 +17,15 @@ ActiveRecord::Schema.define(version: 2019_11_20_070532) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name", null: false
-    t.string "timestamps"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_areas_on_name", unique: true
   end
 
   create_table "brands", force: :cascade do |t|
     t.string "name", null: false
-    t.string "timestamps"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_brands_on_name", unique: true
   end
 
@@ -63,7 +65,8 @@ ActiveRecord::Schema.define(version: 2019_11_20_070532) do
   create_table "sections", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "area_id", null: false
-    t.string "timestamps"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["area_id"], name: "index_sections_on_area_id"
     t.index ["name"], name: "index_sections_on_name", unique: true
   end
@@ -88,7 +91,8 @@ ActiveRecord::Schema.define(version: 2019_11_20_070532) do
 
   create_table "sizes", force: :cascade do |t|
     t.string "description", null: false
-    t.string "timestamps"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["description"], name: "index_sizes_on_description", unique: true
   end
 

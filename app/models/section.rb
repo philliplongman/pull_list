@@ -4,7 +4,8 @@
 #
 #  id         :bigint           not null, primary key
 #  name       :string           not null
-#  timestamps :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #  area_id    :bigint           not null
 #
 # Indexes
@@ -14,7 +15,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (area_id => areas.id)
+#  fk_rails_...  (area_id => areas.id) ON DELETE => cascade
 #
 
 class Section < ApplicationRecord
