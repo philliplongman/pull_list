@@ -8,14 +8,14 @@ class ManagerDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
-    email: Field::String,
-    encrypted_password: Field::String,
-    reset_password_token: Field::String,
+    id:                     Field::Number,
+    email:                  Field::String,
+    encrypted_password:     Field::String,
+    reset_password_token:   Field::String,
     reset_password_sent_at: Field::DateTime,
-    remember_created_at: Field::DateTime,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    remember_created_at:    Field::DateTime,
+    created_at:             Field::DateTime,
+    updated_at:             Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,34 +24,22 @@ class ManagerDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  id
-  email
-  encrypted_password
-  reset_password_token
+    email
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  id
-  email
-  encrypted_password
-  reset_password_token
-  reset_password_sent_at
-  remember_created_at
-  created_at
-  updated_at
+    email
+    reset_password_sent_at
+    remember_created_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  email
-  encrypted_password
-  reset_password_token
-  reset_password_sent_at
-  remember_created_at
+    email
   ].freeze
 
   # COLLECTION_FILTERS

@@ -39,8 +39,6 @@ class ProductDashboard < Administrate::BaseDashboard
     brand
     name
     descriptor
-    created_at
-    updated_at
     sizes
     sections
   ].freeze
