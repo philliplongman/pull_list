@@ -9,6 +9,7 @@ class ManagerDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id:                     Field::Number,
+    name:                   Field::String,
     email:                  Field::String,
     encrypted_password:     Field::String,
     reset_password_token:   Field::String,
@@ -24,12 +25,14 @@ class ManagerDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
+    name
     email
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
+    name
     email
     reset_password_sent_at
     remember_created_at
@@ -39,6 +42,7 @@ class ManagerDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    name
     email
   ].freeze
 
@@ -57,7 +61,7 @@ class ManagerDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how managers are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(manager)
-  #   "Manager ##{manager.id}"
-  # end
+  def display_resource(manager)
+    manager.name
+  end
 end
