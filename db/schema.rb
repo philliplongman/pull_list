@@ -71,24 +71,6 @@ ActiveRecord::Schema.define(version: 2019_11_20_070532) do
     t.index ["name"], name: "index_sections_on_name", unique: true
   end
 
-  create_table "sections_products", force: :cascade do |t|
-    t.bigint "section_id", null: false
-    t.bigint "product_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_sections_products_on_product_id"
-    t.index ["section_id", "product_id"], name: "index_sections_products_on_section_id_and_product_id", unique: true
-    t.index ["section_id"], name: "index_sections_products_on_section_id"
-  end
-
-  create_table "sections_sizes", force: :cascade do |t|
-    t.bigint "section_id", null: false
-    t.bigint "size_id", null: false
-    t.index ["section_id", "size_id"], name: "index_sections_sizes_on_section_id_and_size_id", unique: true
-    t.index ["section_id"], name: "index_sections_sizes_on_section_id"
-    t.index ["size_id"], name: "index_sections_sizes_on_size_id"
-  end
-
   create_table "sizes", force: :cascade do |t|
     t.string "description", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -100,8 +82,4 @@ ActiveRecord::Schema.define(version: 2019_11_20_070532) do
   add_foreign_key "products_sizes", "products", on_delete: :cascade
   add_foreign_key "products_sizes", "sizes", on_delete: :cascade
   add_foreign_key "sections", "areas", on_delete: :cascade
-  add_foreign_key "sections_products", "products", on_delete: :cascade
-  add_foreign_key "sections_products", "sections", on_delete: :cascade
-  add_foreign_key "sections_sizes", "sections", on_delete: :cascade
-  add_foreign_key "sections_sizes", "sizes", on_delete: :cascade
 end

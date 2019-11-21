@@ -21,12 +21,6 @@
 class Section < ApplicationRecord
   belongs_to :area
 
-  has_many :sections_products,  dependent: :destroy
-  has_many :sections_sizes,     dependent: :destroy
-
-  has_many :products, -> { order :name },         through: :sections_products
-  has_many :sizes,    -> { order :description },  through: :sections_sizes
-
   validates :name, presence: true
   validates :name, uniqueness: true
 

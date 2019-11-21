@@ -13,9 +13,6 @@
 #
 
 class Size < ApplicationRecord
-  has_many :sections_sizes, dependent: :destroy
-  has_many :sections, through: :sections_sizes
-
   validates :description, presence: true
   validates :description, uniqueness: true
 
