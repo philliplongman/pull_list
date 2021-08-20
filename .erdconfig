@@ -1,0 +1,4 @@
+filetype: png
+exclude:
+  - ActiveRecord::InternalMetadata
+  - ActiveRecord::SchemaMigration

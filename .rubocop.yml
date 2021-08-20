@@ -1,0 +1,17 @@
+inherit_from: ~/.rubocop.yml
+
+inherit_mode:
+  merge:
+    - Exclude
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - config/initializers/filter_parameter_logging.rb
+
+Layout/LineLength:
+  Exclude:
+    - config/initializers/devise.rb
