@@ -25,6 +25,10 @@ require "rails_helper"
 RSpec.describe Product, type: :model do
   describe "associations" do
     it { should belong_to(:brand) }
+
+    it { should have_many(:containers).dependent(:destroy) }
+
+    it { should have_many(:sizes).through(:containers) }
   end
 
   describe "validations" do

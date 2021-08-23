@@ -23,6 +23,10 @@
 class Product < ApplicationRecord
   belongs_to :brand
 
+  has_many :containers, dependent: :destroy
+
+  has_many :sizes, through: :containers
+
   validates :name, presence: true
   validates :name, uniqueness: { scope: [:brand_id, :variety] }
 
