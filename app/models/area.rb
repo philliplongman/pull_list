@@ -22,6 +22,10 @@
 class Area < ApplicationRecord
   belongs_to :section
 
+  has_many :placements, dependent: :destroy
+
+  has_many :containers, through: :placements
+
   validates :name, presence: true
   validates :name, uniqueness: true
 end

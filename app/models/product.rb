@@ -25,7 +25,8 @@ class Product < ApplicationRecord
 
   has_many :containers, dependent: :destroy
 
-  has_many :sizes, through: :containers
+  has_many :sizes,      through: :containers
+  has_many :placements, through: :containers
 
   validates :name, presence: true
   validates :name, uniqueness: { scope: [:brand_id, :variety] }

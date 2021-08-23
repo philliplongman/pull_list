@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_190252) do
+ActiveRecord::Schema.define(version: 2021_08_23_201106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(version: 2021_08_23_190252) do
     t.index ["encrypted_password"], name: "index_managers_on_encrypted_password", unique: true
   end
 
+  create_table "placements", force: :cascade do |t|
+    t.bigint "area_id", null: false
+    t.bigint "container_id", null: false
+    t.integer "shelf_capacity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["area_id", "container_id"], name: "index_placements_on_area_id_and_container_id", unique: true
+    t.index ["area_id"], name: "index_placements_on_area_id"
+    t.index ["container_id"], name: "index_placements_on_container_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.bigint "brand_id", null: false
     t.string "name", null: false
@@ -81,5 +92,7 @@ ActiveRecord::Schema.define(version: 2021_08_23_190252) do
   add_foreign_key "areas", "sections", on_delete: :cascade
   add_foreign_key "containers", "products", on_delete: :cascade
   add_foreign_key "containers", "sizes", on_delete: :cascade
+  add_foreign_key "placements", "areas", on_delete: :cascade
+  add_foreign_key "placements", "containers", on_delete: :cascade
   add_foreign_key "products", "brands", on_delete: :cascade
 end

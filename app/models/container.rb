@@ -25,5 +25,7 @@ class Container < ApplicationRecord
   belongs_to :product
   belongs_to :size
 
+  has_many :placements, dependent: :destroy
+
   validates :size_id, uniqueness: { scope: :product_id }
 end

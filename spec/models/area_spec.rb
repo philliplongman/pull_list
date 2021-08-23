@@ -24,6 +24,10 @@ require "rails_helper"
 RSpec.describe Area, type: :model do
   describe "associations" do
     it { should belong_to(:section) }
+
+    it { should have_many(:placements) }
+
+    it { should have_many(:containers).through(:placements) }
   end
 
   describe "validations" do

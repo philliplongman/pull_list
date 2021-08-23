@@ -27,6 +27,8 @@ RSpec.describe Container, type: :model do
   describe "associations" do
     it { should belong_to(:product) }
     it { should belong_to(:size) }
+
+    it { should have_many(:placements).dependent(:destroy) }
   end
 
   describe "validations" do

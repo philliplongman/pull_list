@@ -29,6 +29,7 @@ RSpec.describe Product, type: :model do
     it { should have_many(:containers).dependent(:destroy) }
 
     it { should have_many(:sizes).through(:containers) }
+    it { should have_many(:placements).through(:containers) }
   end
 
   describe "validations" do
