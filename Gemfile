@@ -33,6 +33,7 @@ end
 group :development, :test do
   gem "amazing_print"
   gem "factory_bot_rails"
+  gem "humanize"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails"
