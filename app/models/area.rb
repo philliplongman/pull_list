@@ -2,19 +2,25 @@
 
 # == Schema Information
 #
-# Table name: sections
+# Table name: areas
 #
 #  id         :bigint           not null, primary key
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  section_id :bigint           not null
 #
 # Indexes
 #
-#  index_sections_on_name  (name) UNIQUE
+#  index_areas_on_name        (name) UNIQUE
+#  index_areas_on_section_id  (section_id)
 #
-class Section < ApplicationRecord
-  has_many :areas, dependent: :destroy
+# Foreign Keys
+#
+#  fk_rails_...  (section_id => sections.id) ON DELETE => cascade
+#
+class Area < ApplicationRecord
+  belongs_to :section
 
   validates :name, presence: true
   validates :name, uniqueness: true

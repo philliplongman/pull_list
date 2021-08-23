@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_010006) do
+ActiveRecord::Schema.define(version: 2021_08_21_021606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "section_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_areas_on_name", unique: true
+    t.index ["section_id"], name: "index_areas_on_section_id"
+  end
 
   create_table "managers", force: :cascade do |t|
     t.string "name"
@@ -35,4 +44,5 @@ ActiveRecord::Schema.define(version: 2021_08_21_010006) do
     t.index ["name"], name: "index_sections_on_name", unique: true
   end
 
+  add_foreign_key "areas", "sections", on_delete: :cascade
 end
