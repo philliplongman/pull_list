@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_025720) do
+ActiveRecord::Schema.define(version: 2021_08_21_031341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 2021_08_21_025720) do
     t.index ["encrypted_password"], name: "index_managers_on_encrypted_password", unique: true
   end
 
+  create_table "products", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.string "name", null: false
+    t.string "variety"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id", "name", "variety"], name: "index_products_on_brand_id_and_name_and_variety", unique: true
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+  end
+
   create_table "sections", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -59,4 +69,5 @@ ActiveRecord::Schema.define(version: 2021_08_21_025720) do
   end
 
   add_foreign_key "areas", "sections", on_delete: :cascade
+  add_foreign_key "products", "brands", on_delete: :cascade
 end

@@ -16,6 +16,10 @@
 require "rails_helper"
 
 RSpec.describe Brand, type: :model do
+  describe "associations" do
+    it { should have_many(:products).dependent(:destroy) }
+  end
+
   describe "validations" do
     subject { create :brand }
 

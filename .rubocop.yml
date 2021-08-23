@@ -28,3 +28,9 @@ Style/FrozenStringLiteralComment:
 
 RSpec/ImplicitExpect:
   EnforcedStyle: should
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
