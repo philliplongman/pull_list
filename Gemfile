@@ -11,7 +11,7 @@ gem "administrate"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "devise"
 gem "pg", "~> 1.1"
-gem "puma", "~> 5.0"
+gem "puma", "~> 5.6"
 gem "responders"
 gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.0"
